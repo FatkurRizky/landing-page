@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="greenGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#aiBg)" rx="16"/>
+
+  <!-- AI Radar Grid -->
+  <circle cx="400" cy="250" r="180" fill="none" stroke="#10b981" stroke-width="1" opacity="0.2"/>
+  <circle cx="400" cy="250" r="120" fill="none" stroke="#10b981" stroke-width="1" opacity="0.3"/>
+  <circle cx="400" cy="250" r="60" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+  <line x1="220" y1="250" x2="580" y2="250" stroke="#10b981" opacity="0.2"/>
+  <line x1="400" y1="70" x2="400" y2="430" stroke="#10b981" opacity="0.2"/>
+
+  <!-- Top Header -->
+  <rect x="40" y="30" width="720" height="55" fill="#0f172a" fill-opacity="0.9" rx="8" stroke="#10b981" stroke-width="1"/>
+  <text x="65" y="65" fill="#10b981" font-family="monospace" font-weight="bold" font-size="18">NEUROVISION AI // VISION INSPECTION</text>
+  <rect x="610" y="42" width="130" height="30" fill="#10b981" fill-opacity="0.2" rx="6"/>
+  <text x="625" y="62" fill="#10b981" font-family="monospace" font-size="12">ACCURACY 99.4%</text>
+
+  <!-- Computer Vision Bounding Boxes -->
+  <g filter="url(#greenGlow)">
+    <!-- Detected Object 1 -->
+    <rect x="150" y="140" width="220" height="160" fill="none" stroke="#10b981" stroke-width="2" rx="4"/>
+    <rect x="150" y="115" width="110" height="25" fill="#10b981"/>
+    <text x="158" y="132" fill="#020617" font-family="monospace" font-weight="bold" font-size="11">PASS (99.8%)</text>
+    <circle cx="260" cy="220" r="30" fill="#10b981" opacity="0.3"/>
+
+    <!-- Detected Object 2 (Defect Alert) -->
+    <rect x="430" y="180" width="240" height="170" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 6" rx="4"/>
+    <rect x="430" y="155" width="140" height="25" fill="#ef4444"/>
+    <text x="438" y="172" fill="#ffffff" font-family="monospace" font-weight="bold" font-size="11">DEFECT: SCRATCH 94%</text>
+    <circle cx="550" cy="265" r="8" fill="#ef4444"/>
+  </g>
+
+  <!-- Metrics Bar -->
+  <rect x="40" y="380" width="720" height="85" fill="#0f172a" rx="10" stroke="#334155"/>
+  <g transform="translate(60, 400)">
+    <text x="0" y="20" fill="#94a3b8" font-family="sans-serif" font-size="12">INFERENCE TIME</text>
+    <text x="0" y="48" fill="#10b981" font-family="monospace" font-weight="bold" font-size="22">12ms</text>
+  </g>
+  <g transform="translate(240, 400)">
+    <text x="0" y="20" fill="#94a3b8" font-family="sans-serif" font-size="12">DEFECT REDUCTION</text>
+    <text x="0" y="48" fill="#00f0ff" font-family="monospace" font-weight="bold" font-size="22">-85%</text>
+  </g>
+  <g transform="translate(440, 400)">
+    <text x="0" y="20" fill="#94a3b8" font-family="sans-serif" font-size="12">FPS RATE</text>
+    <text x="0" y="48" fill="#a855f7" font-family="monospace" font-weight="bold" font-size="22">60.0 FPS</text>
+  </g>
+  <g transform="translate(600, 400)">
+    <text x="0" y="20" fill="#94a3b8" font-family="sans-serif" font-size="12">MODEL STATUS</text>
+    <text x="0" y="48" fill="#10b981" font-family="monospace" font-weight="bold" font-size="18">ACTIVE</text>
+  </g>
+</svg>
