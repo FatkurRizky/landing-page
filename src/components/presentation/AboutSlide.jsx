@@ -7,10 +7,12 @@ export default function AboutSlide() {
   const { personal, education, educationList } = PORTFOLIO_DATA;
 
   return (
-    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
-      
+    <section
+      id="about"
+      className="relative w-full min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-16 py-24 max-w-7xl mx-auto z-10"
+    >
       {/* Title matching Image 2: "Riwayat" */}
-      <div className="flex flex-col items-center justify-center text-center my-2">
+      <div className="flex flex-col items-center justify-center text-center mb-8">
         <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white stroke-[3]" />
         </div>
@@ -31,7 +33,8 @@ export default function AboutSlide() {
             <motion.div
               key={edu.id}
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
               className={`p-3.5 rounded-2xl border transition-all flex items-center gap-3.5 backdrop-blur-sm ${
                 edu.isCurrent
@@ -75,7 +78,8 @@ export default function AboutSlide() {
         {/* Right Side: Featured College Detail Card for UNP Kediri */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="lg:col-span-7 bg-gradient-to-br from-[#0F3040] via-[#464858] to-[#0F3040] text-white rounded-3xl p-6 md:p-8 shadow-2xl border border-[#0F3040] relative overflow-hidden flex flex-col justify-between"
         >
@@ -143,6 +147,6 @@ export default function AboutSlide() {
         </motion.div>
 
       </div>
-    </div>
+    </section>
   );
 }

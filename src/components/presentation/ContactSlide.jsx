@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2, ArrowUp } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
 import { motion } from 'framer-motion';
 
@@ -26,10 +26,12 @@ export default function ContactSlide({ onShowToast }) {
   };
 
   return (
-    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
-      
+    <section
+      id="contact"
+      className="relative w-full min-h-screen flex flex-col justify-between px-4 sm:px-6 md:px-12 lg:px-16 py-24 max-w-7xl mx-auto z-10"
+    >
       {/* Header */}
-      <div className="mb-4 sm:mb-6 border-b border-[#0F3040]/10 pb-3 sm:pb-4">
+      <div className="mb-6 border-b border-[#0F3040]/10 pb-4">
         <div className="flex items-center gap-2 text-[#A56F63] font-bold text-xs uppercase tracking-widest">
           <MessageSquare className="w-4 h-4" />
           <span>Mari Berkolaborasi</span>
@@ -45,7 +47,8 @@ export default function ContactSlide({ onShowToast }) {
         {/* Left Column: Direct Contact Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="lg:col-span-6 bg-white border border-[#0F3040]/15 rounded-3xl p-6 md:p-8 shadow-lg flex flex-col justify-between space-y-6"
         >
@@ -111,7 +114,8 @@ export default function ContactSlide({ onShowToast }) {
         {/* Right Column: Quick Message Form styled with #0F3040 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="lg:col-span-6 bg-gradient-to-br from-[#0F3040] via-[#464858] to-[#0F3040] text-white p-6 md:p-8 rounded-3xl shadow-xl border border-[#0F3040] flex flex-col justify-between"
         >
@@ -159,7 +163,7 @@ export default function ContactSlide({ onShowToast }) {
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#D99B7F] hover:bg-[#A56F63] text-[#0F3040] font-black py-3 rounded-xl shadow-lg transition-all active:scale-95 text-xs uppercase tracking-wider"
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#D99B7F] hover:bg-[#A56F63] text-[#0F3040] font-black py-3 rounded-xl shadow-lg transition-all active:scale-95 text-xs uppercase tracking-wider cursor-pointer"
               >
                 <Send className="w-4 h-4 text-[#0F3040]" />
                 <span>Kirim Pesan Email</span>
@@ -176,6 +180,19 @@ export default function ContactSlide({ onShowToast }) {
         </motion.div>
 
       </div>
-    </div>
+
+      {/* Footer Bottom */}
+      <div className="mt-12 pt-6 border-t border-[#0F3040]/10 flex flex-col sm:flex-row justify-between items-center text-xs text-[#464858] font-semibold gap-3">
+        <span>© {new Date().getFullYear()} Muhammad Fatkur Rizky — Backend Developer</span>
+        
+        <a
+          href="#hero"
+          className="inline-flex items-center gap-1.5 text-[#0F3040] hover:text-[#A56F63] font-bold transition-colors"
+        >
+          <span>Kembali Ke Atas</span>
+          <ArrowUp className="w-4 h-4" />
+        </a>
+      </div>
+    </section>
   );
 }

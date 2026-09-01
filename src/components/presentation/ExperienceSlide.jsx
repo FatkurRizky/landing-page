@@ -7,10 +7,12 @@ export default function ExperienceSlide() {
   const { experiences } = PORTFOLIO_DATA;
 
   return (
-    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
-      
+    <section
+      id="experience"
+      className="relative w-full min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-16 py-24 max-w-7xl mx-auto z-10"
+    >
       {/* Title matching Image 3: "Pengalaman Kerja" */}
-      <div className="flex flex-col items-center justify-center text-center my-2">
+      <div className="flex flex-col items-center justify-center text-center mb-8">
         <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white stroke-[3]" />
         </div>
@@ -29,7 +31,8 @@ export default function ExperienceSlide() {
         <div className="lg:col-span-4 hidden lg:flex justify-center items-center gap-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="w-20 h-80 rounded-[40px] bg-gradient-to-b from-[#0F3040] to-[#464858] shadow-xl border-2 border-white flex flex-col items-center justify-between p-3 text-white"
           >
@@ -40,7 +43,8 @@ export default function ExperienceSlide() {
 
           <motion.div
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="w-20 h-96 rounded-[40px] bg-gradient-to-b from-[#464858] to-[#A56F63] shadow-2xl border-2 border-white flex flex-col items-center justify-between p-3 text-white"
           >
@@ -51,7 +55,8 @@ export default function ExperienceSlide() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="w-20 h-80 rounded-[40px] bg-gradient-to-b from-[#A56F63] to-[#D99B7F] shadow-xl border-2 border-white flex flex-col items-center justify-between p-3 text-white"
           >
@@ -67,7 +72,8 @@ export default function ExperienceSlide() {
           {/* Header Container Box styled with #0F3040 */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="bg-[#0F3040] text-white p-5 rounded-2xl border border-[#0F3040] shadow-md"
           >
@@ -82,7 +88,8 @@ export default function ExperienceSlide() {
               <motion.div
                 key={exp.id}
                 initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.12 }}
                 className="bg-white border border-[#0F3040]/15 p-5 rounded-2xl shadow-md hover:border-[#0F3040] hover:shadow-lg transition-all"
               >
@@ -120,6 +127,6 @@ export default function ExperienceSlide() {
         </div>
 
       </div>
-    </div>
+    </section>
   );
 }

@@ -14,10 +14,12 @@ export default function SkillsSlide() {
   ];
 
   return (
-    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
-      
+    <section
+      id="skills"
+      className="relative w-full min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-16 py-24 max-w-7xl mx-auto z-10"
+    >
       {/* Slide Title matching Image 1: "Keahlian Utama" */}
-      <div className="flex flex-col items-center justify-center text-center my-2">
+      <div className="flex flex-col items-center justify-center text-center mb-8">
         {/* Blue Ribbon Tab Tag */}
         <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
           <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white stroke-[3]" />
@@ -39,11 +41,12 @@ export default function SkillsSlide() {
             <motion.div
               key={pillar.id}
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
               className={`flex flex-col rounded-3xl overflow-hidden border-2 ${style.border} bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group`}
             >
-              {/* Header Block with Down Arrow Badge (Exact match to Image 1) */}
+              {/* Header Block with Down Arrow Badge */}
               <div className={`${style.bg} ${style.text} p-4 relative flex flex-col justify-center items-center text-center border-b border-black/10`}>
                 <h3 className="text-lg md:text-xl font-black tracking-tight leading-snug">
                   {pillar.title}
@@ -83,7 +86,7 @@ export default function SkillsSlide() {
       </div>
 
       {/* Bottom Right Link */}
-      <div className="flex justify-end pt-2 text-xs font-mono text-[#464858]">
+      <div className="flex justify-end pt-4 text-xs font-mono text-[#464858]">
         <a
           href={contact.github.url}
           target="_blank"
@@ -93,7 +96,6 @@ export default function SkillsSlide() {
           github.com/{contact.github.username}
         </a>
       </div>
-
-    </div>
+    </section>
   );
 }

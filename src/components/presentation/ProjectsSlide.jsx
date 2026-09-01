@@ -8,10 +8,12 @@ export default function ProjectsSlide({ onSelectProject }) {
   const { projects } = PORTFOLIO_DATA;
 
   return (
-    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
-      
+    <section
+      id="projects"
+      className="relative w-full min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-16 py-24 max-w-7xl mx-auto z-10"
+    >
       {/* Top Section matching Image 4 */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center mb-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center mb-8">
         {/* Left Title */}
         <div className="lg:col-span-5 flex flex-col items-start">
           <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
@@ -35,7 +37,7 @@ export default function ProjectsSlide({ onSelectProject }) {
             </p>
           </div>
 
-          {/* Abstract Semi-Circle Decorative Shapes (Top Right of Box in Image 4) */}
+          {/* Abstract Semi-Circle Decorative Shapes */}
           <div className="hidden sm:flex items-center absolute -right-4 -top-3 z-20 pointer-events-none">
             <div className="w-10 h-16 bg-[#464858] rounded-l-full shadow-md transform rotate-12" />
             <div className="w-8 h-14 bg-[#A56F63] rounded-l-full shadow-xs transform -rotate-6" />
@@ -46,7 +48,7 @@ export default function ProjectsSlide({ onSelectProject }) {
       {/* 2x3 Grid Layout of 6 Cards Matching Image 4 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-auto items-stretch relative">
         
-        {/* Bottom Left Abstract Decorative Shapes (Matching Image 4) */}
+        {/* Bottom Left Abstract Decorative Shapes */}
         <div className="absolute -left-8 -bottom-8 pointer-events-none z-0 hidden lg:flex items-end gap-1 opacity-70">
           <div className="w-12 h-24 bg-[#0F3040] rounded-r-full shadow-lg transform -rotate-12" />
           <div className="w-10 h-20 bg-[#D99B7F] rounded-r-full shadow-md" />
@@ -56,7 +58,8 @@ export default function ProjectsSlide({ onSelectProject }) {
           <motion.div
             key={proj.id}
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.08 }}
             className="bg-white border border-[#0F3040]/15 rounded-2xl p-4 shadow-md hover:shadow-xl hover:border-[#0F3040] transition-all flex flex-col justify-between group relative overflow-hidden z-10"
           >
@@ -100,7 +103,7 @@ export default function ProjectsSlide({ onSelectProject }) {
             <div className="pt-3 border-t border-[#0F3040]/10 mt-3 flex items-center justify-between">
               <button
                 onClick={() => onSelectProject(proj)}
-                className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0F3040] hover:text-[#A56F63] transition-colors"
+                className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0F3040] hover:text-[#A56F63] transition-colors cursor-pointer"
               >
                 <span>Detail Architecture</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -119,6 +122,6 @@ export default function ProjectsSlide({ onSelectProject }) {
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
