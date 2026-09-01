@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f0fdf4',
-          500: '#22c55e', 
-          600: '#16a34a',
-          900: '#14532d',
+        palette: {
+          dark: '#0F3040',   // Deep Navy / Dark Slate Teal
+          muted: '#464858',  // Slate Charcoal / Muted Dark Neutral
+          warm: '#A56F63',   // Warm Terracotta / Rose Wood
+          peach: '#D99B7F',  // Sand Peach / Coral Gold Accent
+          bg: '#f7f6f4',     // Soft Off-White Neutral Background
         }
       }
     },
   },
   plugins: [],
 }
-

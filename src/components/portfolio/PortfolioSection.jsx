@@ -12,45 +12,38 @@ export default function PortfolioSection() {
   const { isOpen, modalData, openModal, closeModal } = useModal();
 
   return (
-    <section id="portfolio" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
-      {/* Ambient Neon Backdrops */}
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+    <section id="portfolio" className="py-20 bg-[#09090b] relative overflow-hidden border-b border-zinc-800/80">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono font-bold tracking-wider uppercase">
-            // Selected Portfolio & Case Studies
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-sans font-extrabold text-white tracking-tight">
-            Karya & Rekam Jejak <br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              Pengembangan Sistem Enterprise
-            </span>
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-mono font-medium text-cyan-400 uppercase tracking-widest">
+            // Selected Projects
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            Proyek Pilihan & Case Studies
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Eksplorasi beberapa proyek unggulan yang telah kami bangun dengan standar performa tinggi, skalabilitas cloud, dan pengalaman pengguna modern.
+          <p className="text-zinc-400 text-xs sm:text-sm">
+            Beberapa project full-stack web dan mobile app yang telah saya kembangkan.
           </p>
         </div>
 
-        {/* Filter Categories Tabs */}
+        {/* Filter Category Tabs */}
         <FilterTabs
           activeCategory={activeCategory}
           onSelectCategory={setActiveCategory}
         />
 
         {/* Portfolio Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
               >
                 <ProjectCard project={project} onOpenDetail={openModal} />
               </motion.div>

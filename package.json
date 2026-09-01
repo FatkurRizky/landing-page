@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "test": "node scripts/run-e2e-tests.js",
+    "test": "node --test src/__tests__/landingPage.test.js",
     "preview": "vite preview"
   },
   "dependencies": {

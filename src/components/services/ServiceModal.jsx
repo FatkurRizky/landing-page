@@ -7,6 +7,9 @@ import Button from '../common/Button';
 export default function ServiceModal({ isOpen, onClose, service }) {
   if (!service) return null;
 
+  const techList = service.techStack || service.tech || [];
+  const featureList = service.keyFeatures || [];
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Layanan: ${service.title}`}>
       <div className="space-y-6">
@@ -23,7 +26,7 @@ export default function ServiceModal({ isOpen, onClose, service }) {
             </div>
             <div>
               <div className="text-xs font-mono text-slate-400">Estimasi Biaya Mulai</div>
-              <div className="text-lg font-mono font-bold text-emerald-400">{service.pricing}</div>
+              <div className="text-base font-mono font-bold text-emerald-400">{service.pricing}</div>
             </div>
           </div>
 
@@ -32,20 +35,20 @@ export default function ServiceModal({ isOpen, onClose, service }) {
               <Clock className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-mono text-slate-400">Estimasi Waktu Pengerjaan</div>
-              <div className="text-lg font-mono font-bold text-cyan-400">{service.estimatedTimeline}</div>
+              <div className="text-xs font-mono text-slate-400">Garansi & Audit</div>
+              <div className="text-base font-mono font-bold text-cyan-400">Clean Code & Support</div>
             </div>
           </div>
         </div>
 
-        {/* Tech Stack Matrix with min-w-0 flex-1 */}
+        {/* Tech Stack Matrix */}
         <div className="space-y-2">
           <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
             <Layers className="w-4 h-4 text-cyan-400" />
             Teknologi & Framework
           </h4>
-          <div className="flex flex-wrap gap-2 p-3 bg-slate-950/60 rounded-xl border border-slate-800 min-w-0 flex-1">
-            {service.techStack.map((tech) => (
+          <div className="flex flex-wrap gap-2 p-3 bg-slate-950/60 rounded-xl border border-slate-800">
+            {techList.map((tech) => (
               <Badge key={tech} variant="cyan">
                 {tech}
               </Badge>
@@ -54,34 +57,21 @@ export default function ServiceModal({ isOpen, onClose, service }) {
         </div>
 
         {/* Key Features List */}
-        <div className="space-y-2">
-          <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-            Fitur Utama
-          </h4>
+        {featureList.length > 0 && (
           <div className="space-y-2">
-            {service.keyFeatures.map((feat, idx) => (
-              <div key={idx} className="flex items-start gap-3 text-xs text-slate-300 bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/80">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                <span>{feat}</span>
-              </div>
-            ))}
+            <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
+              Cakupan Fitur Utama
+            </h4>
+            <div className="space-y-2">
+              {featureList.map((feat, idx) => (
+                <div key={idx} className="flex items-start gap-3 text-xs text-slate-300 bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/80">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Deliverables Checklist */}
-        <div className="space-y-2">
-          <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-            Deliverables (Hasil Akhir)
-          </h4>
-          <div className="space-y-2">
-            {service.deliverables.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/5 p-2 rounded-lg border border-emerald-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* CTA Button to Estimator */}
         <div className="pt-4 border-t border-slate-800 flex justify-end gap-3">
@@ -90,7 +80,7 @@ export default function ServiceModal({ isOpen, onClose, service }) {
           </Button>
           <a href="#estimator" onClick={onClose}>
             <Button variant="emerald" size="sm" icon={Sparkles}>
-              Hitung Estimasi & Order
+              Kalkulasi Biaya
             </Button>
           </a>
         </div>

@@ -10,20 +10,20 @@ export function BudgetSlider({ value, onChange, budgetValue, setBudgetValue, for
   const displayVal = formattedBudgetText || `${formatRupiah(currentVal)}${isMax ? '+' : ''}`;
 
   return (
-    <div className="space-y-3 bg-slate-950/60 p-5 rounded-2xl border border-slate-800">
+    <div className="space-y-3 bg-zinc-950/60 p-4 rounded-xl border border-zinc-800/80">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-          Alokasi Anggaran / Budget Proyek Anda:
+        <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">
+          2. Alokasi Budget Proyek:
         </label>
-        <span 
+        <span
           data-testid="budget-value-display"
-          className="text-base font-mono font-extrabold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-lg border border-cyan-500/30"
+          className="text-sm font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/20"
         >
           {displayVal}
         </span>
       </div>
 
-      <div className="relative pt-2">
+      <div className="relative pt-1">
         <input
           data-testid="budget-slider-input"
           type="range"
@@ -32,9 +32,9 @@ export function BudgetSlider({ value, onChange, budgetValue, setBudgetValue, for
           step={rangeConfig.step || 500000}
           value={currentVal}
           onChange={(e) => handleChange(Number(e.target.value))}
-          className="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 focus:outline-none"
+          className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 focus:outline-none"
         />
-        <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-2">
+        <div className="flex justify-between text-[10px] font-mono text-zinc-400 pt-2">
           <span>{formatRupiah(rangeConfig.min)}</span>
           <span>{formatRupiah(10000000)}</span>
           <span>{formatRupiah(rangeConfig.max)}+</span>

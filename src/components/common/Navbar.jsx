@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Menu, X, Sparkles } from 'lucide-react';
+import { Terminal, Menu, X, FileText, Mail } from 'lucide-react';
 import Button from './Button';
+import { AGENCY_CONFIG } from '../../data/agencyData';
 
-export default function Navbar() {
+export default function Navbar({ onOpenResume }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -15,84 +16,100 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Layanan', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Estimator Biaya', href: '#estimator' }
+    { name: 'Portofolio', href: '#portfolio' },
+    { name: 'Tech Stack', href: '#services' },
+    { name: 'Kalkulator Proyek', href: '#estimator' },
+    { name: 'Kontak', href: '#contact' },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/20 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+          ? 'bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800 py-3 shadow-md'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:scale-105 transition-transform">
-            <Terminal className="w-5 h-5 text-slate-950 stroke-[2.5]" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand Logo & Name */}
+        <a href="#" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-lg bg-zinc-100 text-zinc-900 flex items-center justify-center font-bold font-mono text-xs group-hover:bg-cyan-400 transition-colors">
+            MF
           </div>
           <div className="flex flex-col">
-            <span className="font-mono font-bold text-lg tracking-wider text-slate-100 group-hover:text-cyan-400 transition-colors">
-              zoldyckDev<span className="text-cyan-400">//</span>
+            <span className="font-bold text-sm tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+              {AGENCY_CONFIG.name}
             </span>
-            <span className="text-[10px] font-mono text-slate-400 -mt-1 tracking-widest uppercase">Software House</span>
+            <span className="text-[10px] text-zinc-400 font-mono -mt-0.5">
+              {AGENCY_CONFIG.brandName}
+            </span>
           </div>
         </a>
 
         {/* Desktop Nav Items */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all"
+              className="text-xs font-medium text-zinc-400 hover:text-white transition-colors"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
-          <a href="#estimator">
-            <Button variant="primary" size="sm" icon={Sparkles}>
-              Konsultasi Gratis
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={onOpenResume}
+            className="flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white bg-zinc-900 border border-zinc-800 hover:border-zinc-700 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+          >
+            <FileText size={13} className="text-cyan-400" />
+            <span>Lihat CV HRD</span>
+          </button>
+
+          <a href={`mailto:${AGENCY_CONFIG.email}`}>
+            <Button variant="primary" size="sm" icon={Mail}>
+              Email
             </Button>
           </a>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
+        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-slate-400 hover:text-cyan-400 rounded-lg"
-          aria-label="Toggle Navigation"
+          className="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg bg-zinc-900 border border-zinc-800 cursor-pointer"
+          aria-label="Toggle Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 border-b border-cyan-500/30 px-4 pt-3 pb-6 space-y-3 backdrop-blur-xl">
+        <div className="md:hidden bg-[#09090b] border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-slate-200 hover:text-cyan-400 py-2 border-b border-slate-800/50"
+              className="block text-sm font-medium text-zinc-300 hover:text-white py-2 border-b border-zinc-800/50"
             >
               {link.name}
             </a>
           ))}
-          <div className="pt-2">
-            <a href="#estimator" onClick={() => setMobileMenuOpen(false)}>
-              <Button variant="primary" size="md" className="w-full" icon={Sparkles}>
-                Konsultasi Gratis
-              </Button>
-            </a>
+          <div className="pt-2 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenResume();
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-zinc-900 text-zinc-200 border border-zinc-800 rounded-xl text-xs font-medium"
+            >
+              <FileText size={14} className="text-cyan-400" />
+              <span>Lihat CV / HRD Summary</span>
+            </button>
           </div>
         </div>
       )}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, Code2, ExternalLink, Send } from 'lucide-react';
+import { X, Sparkles, Code2, ExternalLink, Send, CheckCircle2 } from 'lucide-react';
+import { GithubIcon } from './common/SocialIcons';
 import { AGENCY_CONFIG } from '../data/agencyData';
 
 export default function ProjectDetailModal({ project, isOpen, onClose }) {
@@ -13,11 +14,13 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
     window.open(`https://ig.me/m/${AGENCY_CONFIG.instagramUsername}?text=${textPesan}`, '_blank');
   };
 
+  const techList = project.techStack || project.tech || [];
+
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop Blur Gelap */}
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -26,31 +29,31 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
             className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 cursor-pointer"
           />
 
-          {/* Modal Card Detail Besar */}
+          {/* Modal Container */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-            className="fixed inset-x-4 top-[5%] bottom-[5%] max-w-3xl mx-auto bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 z-50 shadow-2xl overflow-y-auto flex flex-col justify-between"
+            className="fixed inset-x-4 top-[5%] bottom-[5%] max-w-3xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 z-50 shadow-2xl overflow-y-auto flex flex-col justify-between"
           >
             <div className="space-y-6">
-              {/* Header Modal */}
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
-                <span className="px-3 py-1 bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-black rounded-full flex items-center gap-1.5">
-                  <Sparkles size={14} /> {project.tag}
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-bold rounded-full flex items-center gap-1.5">
+                  <Sparkles size={14} /> {project.tag || project.category}
                 </span>
 
                 <button
                   onClick={onClose}
-                  className="p-2.5 bg-zinc-950 text-zinc-400 hover:text-white rounded-2xl border border-zinc-800 cursor-pointer transition-all hover:bg-zinc-800"
+                  className="p-2.5 bg-slate-950 text-slate-400 hover:text-white rounded-2xl border border-slate-800 cursor-pointer transition-all hover:bg-slate-800"
                 >
                   <X size={18} />
                 </button>
               </div>
 
-              {/* Screenshot Gambar 16:9 Wide Aspect Ratio */}
-              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800 relative group shadow-inner">
+              {/* Screenshot Image */}
+              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 relative group shadow-inner">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -58,26 +61,26 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
                 />
               </div>
 
-              {/* Judul & Deskripsi Lengkap */}
+              {/* Title & Description */}
               <div className="space-y-3">
-                <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
+                <h2 className="text-2xl md:text-3xl font-mono font-black text-white leading-tight">
                   {project.title}
                 </h2>
-                <p className="text-sm text-zinc-300 leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800">
                   {project.description}
                 </p>
               </div>
 
               {/* Tech Stack Pills */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block flex items-center gap-1">
-                  <Code2 size={14} className="text-pink-400" /> Teknologi Yang Digunakan:
+                <label className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block flex items-center gap-1">
+                  <Code2 size={14} className="text-cyan-400" /> Teknologi Yang Digunakan:
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t, idx) => (
+                  {techList.map((t, idx) => (
                     <span
                       key={idx}
-                      className="bg-zinc-950 border border-zinc-800 text-pink-300 text-xs font-bold px-3 py-1.5 rounded-xl"
+                      className="bg-slate-950 border border-slate-800 text-cyan-300 text-xs font-mono font-bold px-3 py-1.5 rounded-xl"
                     >
                       {t}
                     </span>
@@ -87,17 +90,17 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
             </div>
 
             {/* Footer Direct IG Consultation Button */}
-            <div className="pt-6 border-t border-zinc-800 mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="pt-6 border-t border-slate-800 mt-8 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onClose}
-                className="py-3.5 px-6 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 rounded-xl text-xs font-bold cursor-pointer transition-all"
+                className="py-3.5 px-6 bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all"
               >
                 Tutup Preview
               </button>
 
               <button
                 onClick={handleConsultIG}
-                className="flex-1 py-3.5 px-6 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:opacity-95 text-white font-extrabold rounded-xl text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.3)] cursor-pointer transition-all active:scale-98"
+                className="flex-1 py-3.5 px-6 bg-gradient-to-r from-cyan-500 via-teal-400 to-blue-600 hover:opacity-95 text-slate-950 font-mono font-extrabold rounded-xl text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] cursor-pointer transition-all active:scale-98"
               >
                 <Send size={15} />
                 <span>Konsultasi Pembuatan Web Seperti Ini via IG DM</span>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ExternalLink, CheckCircle2, Clock, User, BarChart3, Code2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Clock, User, BarChart3, Code2, X } from 'lucide-react';
+import { GithubIcon } from '../common/SocialIcons';
 import Modal from '../common/Modal';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -7,40 +8,30 @@ import Button from '../common/Button';
 export default function ProjectModal({ isOpen, onClose, project }) {
   if (!project) return null;
 
+  const techList = project.techStack || project.tech || [];
+  const featureList = project.highlights || project.keyFeatures || [];
+  const githubLink = project.github || project.githubUrl;
+  const demoLink = project.demo || project.liveUrl;
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Case Study: ${project.title}`} maxWidth="max-w-3xl">
       <div className="space-y-6">
-        {/* Project Image Preview with object-contain & padding guardrail */}
-        <div className="w-full h-64 sm:h-80 bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-center overflow-hidden">
+        {/* Project Image Preview */}
+        <div className="w-full aspect-video bg-slate-950 rounded-xl border border-slate-800 overflow-hidden relative shadow-inner">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-contain rounded-lg"
+            className="w-full h-full object-cover object-top"
           />
-        </div>
-
-        {/* Client & Timeline Meta */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center gap-3">
-            <User className="w-5 h-5 text-cyan-400" />
-            <div>
-              <div className="text-[11px] font-mono text-slate-400">Klien</div>
-              <div className="text-sm font-bold text-slate-200">{project.client}</div>
-            </div>
-          </div>
-          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center gap-3">
-            <Clock className="w-5 h-5 text-emerald-400" />
-            <div>
-              <div className="text-[11px] font-mono text-slate-400">Durasi Pengerjaan</div>
-              <div className="text-sm font-bold text-slate-200">{project.timeline}</div>
-            </div>
+          <div className="absolute top-3 left-3">
+            <Badge variant="cyan">{project.tag || project.category}</Badge>
           </div>
         </div>
 
         {/* Description */}
         <div>
           <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2">
-            Ringkasan Proyek & Solusi
+            Ringkasan Proyek & Tanggung Jawab Engineering
           </h4>
           <p className="text-sm text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800">
             {project.description}
@@ -52,12 +43,12 @@ export default function ProjectModal({ isOpen, onClose, project }) {
           <div>
             <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-cyan-400" />
-              Pencapaian Performa & Metrik Kunci
+              Metrik Performa & Hasil Pengujian
             </h4>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {Object.entries(project.metrics).map(([key, val]) => (
                 <div key={key} className="p-3 rounded-xl bg-slate-950/80 border border-cyan-500/30 text-center">
-                  <div className="text-base sm:text-lg font-mono font-bold text-cyan-400">{val}</div>
+                  <div className="text-sm sm:text-base font-mono font-bold text-cyan-400">{val}</div>
                   <div className="text-[10px] font-mono text-slate-400 uppercase mt-0.5">{key}</div>
                 </div>
               ))}
@@ -65,28 +56,30 @@ export default function ProjectModal({ isOpen, onClose, project }) {
           </div>
         )}
 
-        {/* Key Features List */}
-        <div className="space-y-2">
-          <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-            Fitur Utama Arsitektur
-          </h4>
+        {/* Highlights / Features List */}
+        {featureList.length > 0 && (
           <div className="space-y-2">
-            {project.keyFeatures.map((feat, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/80">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span>{feat}</span>
-              </div>
-            ))}
+            <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
+              Sorotan Arsitektur & Keunggulan Clean Code
+            </h4>
+            <div className="space-y-2">
+              {featureList.map((feat, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/80">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Tech Stack Matrix with min-w-0 flex-1 layout guardrail */}
+        {/* Tech Stack Matrix */}
         <div className="space-y-2">
           <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-            Teknologi yang Digunakan
+            Teknologi & Tools
           </h4>
-          <div className="flex flex-wrap gap-2 p-3 bg-slate-950/60 rounded-xl border border-slate-800 min-w-0 flex-1">
-            {project.techStack.map((tech) => (
+          <div className="flex flex-wrap gap-2 p-3 bg-slate-950/60 rounded-xl border border-slate-800">
+            {techList.map((tech) => (
               <Badge key={tech} variant="cyan">
                 {tech}
               </Badge>
@@ -96,24 +89,24 @@ export default function ProjectModal({ isOpen, onClose, project }) {
 
         {/* Links & CTA Actions */}
         <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            {project.githubUrl && (
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" icon={Code2}>
-                  Source Code
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            {githubLink && (
+              <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" icon={GithubIcon}>
+                  Repository GitHub
                 </Button>
               </a>
             )}
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+            {demoLink && (
+              <a href={demoLink} target="_blank" rel="noopener noreferrer">
                 <Button variant="primary" size="sm" icon={ExternalLink}>
-                  Buka Demo Live
+                  Buka Demo / Web
                 </Button>
               </a>
             )}
           </div>
           <Button variant="secondary" size="sm" onClick={onClose} className="w-full sm:w-auto">
-            Tutup Case Study
+            Tutup Preview
           </Button>
         </div>
       </div>
