@@ -6,7 +6,7 @@ export default function PresentationHeader({ activeSlideIndex, setActiveSlideInd
   const { personal, slides } = PORTFOLIO_DATA;
 
   return (
-    <header className="relative z-20 w-full px-6 py-4 md:px-12 md:py-6 flex items-center justify-between border-b border-[#0F3040]/10 bg-white/40 backdrop-blur-sm">
+    <header className="relative z-20 w-full px-4 py-3 sm:px-6 sm:py-4 md:px-12 md:py-6 flex items-center justify-between border-b border-[#0F3040]/10 bg-white/40 backdrop-blur-sm">
       {/* Top Left Header Label */}
       <div className="flex items-center gap-3">
         <span className="w-2.5 h-2.5 rounded-full bg-[#0F3040] animate-pulse" />

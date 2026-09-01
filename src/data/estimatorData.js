@@ -42,6 +42,6 @@ export const BUDGET_RANGE = {
 
 export const WHATSAPP_CONFIG = {
   consultantName: 'Fatkur (zoldyckDev)',
-  phoneNumber: '6289524039864',
+  phoneNumber: '',
   email: 'setanalas1809@gmail.com'
 };

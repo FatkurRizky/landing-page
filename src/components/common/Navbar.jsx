@@ -88,13 +88,13 @@ export default function Navbar({ onOpenResume }) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#09090b] border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3">
+        <div className="md:hidden bg-[#09090b]/95 backdrop-blur-md border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-medium text-zinc-300 hover:text-white py-2 border-b border-zinc-800/50"
+              className="block text-xs font-medium text-zinc-300 hover:text-white py-2 border-b border-zinc-800/50"
             >
               {link.name}
             </a>
@@ -110,6 +110,14 @@ export default function Navbar({ onOpenResume }) {
               <FileText size={14} className="text-cyan-400" />
               <span>Lihat CV / HRD Summary</span>
             </button>
+            <a
+              href={`mailto:${AGENCY_CONFIG.email}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-white text-zinc-900 font-bold rounded-xl text-xs"
+            >
+              <Mail size={14} />
+              <span>Email Langsung</span>
+            </a>
           </div>
         </div>
       )}

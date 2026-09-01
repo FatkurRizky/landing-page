@@ -65,8 +65,6 @@ export const PORTFOLIO_DATA = {
   },
   contact: {
     email: 'emailanda@domain.com',
-    phone: '081234567890',
-    whatsappUrl: 'https://wa.me/6281234567890?text=Halo',
     github: { username: 'UsernameGitHub', url: 'https://github.com/Username' },
     linkedin: { username: 'UsernameLinkedIn', url: 'https://linkedin.com/in/Username' },
   }

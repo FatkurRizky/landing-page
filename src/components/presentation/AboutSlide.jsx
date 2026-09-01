@@ -7,17 +7,17 @@ export default function AboutSlide() {
   const { personal, education, educationList } = PORTFOLIO_DATA;
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
+    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
       
       {/* Title matching Image 2: "Riwayat" */}
       <div className="flex flex-col items-center justify-center text-center my-2">
-        <div className="w-8 h-8 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
-          <ChevronRight className="w-5 h-5 text-white stroke-[3]" />
+        <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white stroke-[3]" />
         </div>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F3040] font-sans leading-none">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F3040] font-sans leading-none">
           Riwayat
         </h2>
-        <p className="text-xs font-bold text-[#A56F63] uppercase tracking-widest mt-1">
+        <p className="text-[10px] sm:text-xs font-bold text-[#A56F63] uppercase tracking-widest mt-1">
           Pendidikan Resmi: Kuliah, SMA/MAN, SMP, & SD
         </p>
       </div>

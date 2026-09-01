@@ -28,15 +28,15 @@ export const PORTFOLIO_DATA = {
   // 📞 Kontak & Media Sosial
   contact: {
     email: 'muhammadfatkur676@gmail.com',
-    phone: '081240537963',
-    whatsappUrl: 'https://wa.me/6281240537963?text=Halo%20Fatkur,%20saya%20tertarik%20dengan%20portofolio%20Anda',
+    phone: '',
+    whatsappUrl: '',
     github: {
       username: 'FatkurRizky',
       url: 'https://github.com/FatkurRizky',
     },
     linkedin: {
       username: 'fatkurrizky',
-      url: 'https://linkedin.com/in/fatkurrizky',
+      url: 'https://www.linkedin.com/in/muhammad-fatkur-rizky-/',
     },
     location: 'Kediri, Jawa Timur, Indonesia',
   },

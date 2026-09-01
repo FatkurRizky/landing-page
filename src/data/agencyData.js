@@ -14,7 +14,6 @@ export const AGENCY_CONFIG = {
   githubUrl: 'https://github.com/FatkurRizky',
   linkedinUrl: 'https://www.linkedin.com/in/muhammad-fatkur-rizky-/',
   email: 'setanalas1809@gmail.com',
-  whatsappNumber: '6289524039864',
   location: 'Indonesia',
   resumeUrl: '#resume',
 

@@ -14,19 +14,19 @@ export default function SkillsSlide() {
   ];
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
+    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
       
       {/* Slide Title matching Image 1: "Keahlian Utama" */}
       <div className="flex flex-col items-center justify-center text-center my-2">
         {/* Blue Ribbon Tab Tag */}
-        <div className="w-6 h-6 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
-          <ChevronRight className="w-4 h-4 text-white stroke-[3]" />
+        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#0F3040] rounded-sm flex items-center justify-center transform -rotate-12 mb-1 shadow-md">
+          <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white stroke-[3]" />
         </div>
 
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F3040] font-sans leading-none">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F3040] font-sans leading-none">
           Keahlian
         </h2>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#D99B7F] font-sans leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#D99B7F] font-sans leading-tight">
           Utama
         </h2>
       </div>

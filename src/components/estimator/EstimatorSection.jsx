@@ -59,20 +59,18 @@ export function EstimatorSection() {
 
           <div className="bg-zinc-900/60 border border-zinc-800 p-5 rounded-2xl space-y-3">
             <div className="text-xs font-mono font-bold text-zinc-200 flex items-center gap-2">
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>Diskusi Langsung via WhatsApp</span>
+              <Mail className="w-4 h-4 text-cyan-400" />
+              <span>Diskusi Teknis via Email</span>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Kirimkan rincian modul di atas langsung ke WhatsApp untuk diskusi teknis & jadwal pengerjaan.
+              Kirimkan rincian modul di atas langsung ke email resmi untuk estimasi timeline & penawaran.
             </p>
             <a
-              href={formattedWhatsAppUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs px-4 py-3 rounded-xl transition cursor-pointer"
+              href={`mailto:${AGENCY_CONFIG.email}?subject=Konsultasi%20Proyek%20Web%20/%20Mobile&body=Halo%20Fatkur,%0A%0ASaya%20tertarik%20dengan%20estimasi%20proyek%20${formattedCostText}%20(${estimatedDays}%20hari).`}
+              className="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-zinc-100 text-zinc-900 font-bold text-xs px-4 py-3 rounded-xl transition cursor-pointer"
             >
-              <MessageCircle size={15} />
-              <span>Kirim Rincian ke WhatsApp</span>
+              <Mail size={15} />
+              <span>Kirim Rincian ke Email</span>
             </a>
           </div>
         </div>

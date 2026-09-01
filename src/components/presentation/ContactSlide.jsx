@@ -15,25 +15,26 @@ export default function ContactSlide({ onShowToast }) {
 
     setIsSent(true);
     if (onShowToast) {
-      onShowToast('✨ Pesan Anda siap terkirim via WhatsApp!');
+      onShowToast('✨ Membuka client email...');
     }
 
-    const waText = encodeURIComponent(
-      `Halo Fatkur, saya ${formData.name} (${formData.email || 'Email/Contact'}).\n\nPesan: ${formData.message}`
+    const mailSubject = encodeURIComponent(`Pesan dari Portofolio: ${formData.name}`);
+    const mailBody = encodeURIComponent(
+      `Halo Fatkur,\n\nNama: ${formData.name}\nKontak: ${formData.email || '-'}\n\nPesan:\n${formData.message}`
     );
-    window.open(`https://wa.me/6281240537963?text=${waText}`, '_blank');
+    window.location.href = `mailto:${contact.email}?subject=${mailSubject}&body=${mailBody}`;
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
+    <div className="relative w-full min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16 max-w-7xl mx-auto z-10">
       
       {/* Header */}
-      <div className="mb-6 border-b border-[#0F3040]/10 pb-4">
+      <div className="mb-4 sm:mb-6 border-b border-[#0F3040]/10 pb-3 sm:pb-4">
         <div className="flex items-center gap-2 text-[#A56F63] font-bold text-xs uppercase tracking-widest">
           <MessageSquare className="w-4 h-4" />
           <span>Mari Berkolaborasi</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-black text-[#0F3040] tracking-tight mt-1">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0F3040] tracking-tight mt-1">
           Hubungi <span className="text-[#D99B7F]">{personal.nickname}</span>
         </h2>
       </div>
@@ -70,50 +71,35 @@ export default function ContactSlide({ onShowToast }) {
               </div>
             </a>
 
-            {/* WhatsApp */}
+            {/* LinkedIn Card */}
             <a
-              href={contact.whatsappUrl}
+              href={contact.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-2xl bg-[#f7f6f4] border border-[#0F3040]/15 hover:bg-emerald-50 hover:border-emerald-300 transition-colors group"
+              className="flex items-center gap-4 p-4 rounded-2xl bg-[#f7f6f4] border border-[#0F3040]/15 hover:bg-blue-50 hover:border-blue-300 transition-colors group"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center transition-colors">
-                <Phone className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-[#0A66C2] text-white flex items-center justify-center transition-colors">
+                <LinkedinIcon className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="text-xs font-bold text-[#A56F63] uppercase tracking-wider">WhatsApp / Telepon</p>
-                <p className="text-sm font-extrabold text-[#0F3040]">{contact.phone}</p>
+                <p className="text-xs font-bold text-[#A56F63] uppercase tracking-wider">LinkedIn Profile</p>
+                <p className="text-sm font-extrabold text-[#0F3040]">in/{contact.linkedin.username}</p>
               </div>
             </a>
 
-            {/* GitHub & LinkedIn */}
-            <div className="grid grid-cols-2 gap-3 pt-1">
-              <a
-                href={contact.github.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#0F3040] text-white hover:bg-[#464858] transition-colors"
-              >
-                <GithubIcon className="w-5 h-5 text-[#D99B7F]" />
-                <div className="overflow-hidden">
-                  <p className="text-[10px] text-slate-300 font-mono">GitHub</p>
-                  <p className="text-xs font-extrabold truncate">@{contact.github.username}</p>
-                </div>
-              </a>
-
-              <a
-                href={contact.linkedin.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#A56F63] text-white hover:bg-[#0F3040] transition-colors"
-              >
-                <LinkedinIcon className="w-5 h-5 text-white" />
-                <div className="overflow-hidden">
-                  <p className="text-[10px] text-blue-100 font-mono">LinkedIn</p>
-                  <p className="text-xs font-extrabold truncate">in/{contact.linkedin.username}</p>
-                </div>
-              </a>
-            </div>
+            {/* GitHub */}
+            <a
+              href={contact.github.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-2xl bg-[#0F3040] text-white hover:bg-[#464858] transition-colors"
+            >
+              <GithubIcon className="w-5 h-5 text-[#D99B7F]" />
+              <div className="overflow-hidden">
+                <p className="text-[10px] text-slate-300 font-mono">GitHub</p>
+                <p className="text-xs font-extrabold truncate">@{contact.github.username}</p>
+              </div>
+            </a>
           </div>
 
           <div className="pt-2 text-xs text-[#464858] font-bold flex items-center gap-1.5">
@@ -132,7 +118,7 @@ export default function ContactSlide({ onShowToast }) {
           <div className="space-y-4">
             <div className="border-b border-white/10 pb-3">
               <h3 className="text-lg font-black text-white">Kirim Pesan Singkat</h3>
-              <p className="text-xs text-[#D99B7F] font-semibold">Pesan akan langsung terhubung ke WhatsApp Fatkur.</p>
+              <p className="text-xs text-[#D99B7F] font-semibold">Pesan akan langsung terhubung ke email resmi Fatkur.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -176,7 +162,7 @@ export default function ContactSlide({ onShowToast }) {
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#D99B7F] hover:bg-[#A56F63] text-[#0F3040] font-black py-3 rounded-xl shadow-lg transition-all active:scale-95 text-xs uppercase tracking-wider"
               >
                 <Send className="w-4 h-4 text-[#0F3040]" />
-                <span>Kirim via WhatsApp</span>
+                <span>Kirim Pesan Email</span>
               </button>
             </form>
           </div>
@@ -184,7 +170,7 @@ export default function ContactSlide({ onShowToast }) {
           {isSent && (
             <div className="mt-4 p-3 bg-emerald-950/80 border border-emerald-800 text-emerald-300 rounded-xl text-xs flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Pesan disiapkan! Membuka WhatsApp...</span>
+              <span>Membuka client email Anda...</span>
             </div>
           )}
         </motion.div>

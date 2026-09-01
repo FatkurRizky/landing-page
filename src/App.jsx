@@ -14,7 +14,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -43,17 +42,6 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [totalSlides]);
-
-  // Autoplay Timer Support
-  useEffect(() => {
-    if (!isAutoPlay) return;
-
-    const timer = setInterval(() => {
-      setActiveSlideIndex((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
-    }, 6000);
-
-    return () => clearInterval(timer);
-  }, [isAutoPlay, totalSlides]);
 
   const renderActiveSlide = () => {
     switch (activeSlideIndex) {
@@ -108,7 +96,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.99 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="w-full h-full"
+            className="w-full min-h-full flex flex-col justify-center"
           >
             {renderActiveSlide()}
           </motion.div>
@@ -119,8 +107,6 @@ export default function App() {
       <SlideControls
         activeSlideIndex={activeSlideIndex}
         setActiveSlideIndex={setActiveSlideIndex}
-        isAutoPlay={isAutoPlay}
-        setIsAutoPlay={setIsAutoPlay}
       />
 
       {/* Project Detail Modal */}
