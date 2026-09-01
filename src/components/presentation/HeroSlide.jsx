@@ -21,7 +21,7 @@ export default function HeroSlide() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-7 flex flex-col items-start space-y-4 sm:space-y-6"
+          className="lg:col-span-7 flex flex-col items-start space-y-4 sm:space-y-5"
         >
           {/* Top Ribbon Tag styled with #0F3040 and #D99B7F */}
           <div className="flex items-center gap-2">
@@ -34,7 +34,7 @@ export default function HeroSlide() {
           </div>
 
           {/* Main Hero Headline */}
-          <div className="space-y-1">
+          <div className="space-y-1 w-full">
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#0F3040] font-sans leading-none">
               Porto<span className="text-[#D99B7F]">folio</span>
             </h1>
@@ -89,7 +89,7 @@ export default function HeroSlide() {
           </div>
         </motion.div>
 
-        {/* Right Photo Column: Transparent Cutout Character with Anime Cloud Element (Both Dark by Default, Bright on Hover) */}
+        {/* Right Photo Column: Transparent Cutout Character with Anime Cloud Element */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 25 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}

@@ -68,9 +68,6 @@ export default function PresentationHeader() {
             <span className="hidden sm:inline">Download CV</span>
           </a>
 
-          <span className="hidden sm:inline text-lg md:text-xl font-black tracking-tight text-[#0F3040] font-mono">
-            {personal.year}
-          </span>
 
           {/* Mobile Hamburger Button */}
           <button

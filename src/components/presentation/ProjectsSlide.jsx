@@ -1,7 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { ChevronRight, Zap } from 'lucide-react';
-import { GithubIcon } from '../common/SocialIcons';
+import { GithubIcon } from './SocialIcons';
 import { motion } from 'framer-motion';
 
 export default function ProjectsSlide({ onSelectProject }) {

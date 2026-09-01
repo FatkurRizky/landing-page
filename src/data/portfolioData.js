@@ -12,7 +12,6 @@ export const PORTFOLIO_DATA = {
     nickname: 'Fatkur',
     title: 'Backend Developer & Software Engineer',
     subtitle: 'Mahasiswa Teknik Informatika S1 | Linux & REST API Enthusiast',
-    year: '2026',
     location: 'Kediri, Jawa Timur, Indonesia',
     statusBadge: 'Terbuka untuk Intern & Full-Time Remote / On-Site',
     avatar: '/profile.png',

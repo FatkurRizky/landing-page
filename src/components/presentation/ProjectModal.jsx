@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, CheckCircle2, Zap } from 'lucide-react';
-import { GithubIcon } from '../common/SocialIcons';
+import { GithubIcon } from './SocialIcons';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ProjectModal({ project, onClose }) {

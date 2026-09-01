@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2, ArrowUp } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { motion } from 'framer-motion';
 
 export default function ContactSlide({ onShowToast }) {

@@ -8,6 +8,7 @@ import ProjectsSlide from './components/presentation/ProjectsSlide';
 import ExperienceSlide from './components/presentation/ExperienceSlide';
 import ContactSlide from './components/presentation/ContactSlide';
 import ProjectModal from './components/presentation/ProjectModal';
+import SwarmCursor from './components/presentation/SwarmCursor';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
@@ -22,7 +23,20 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-[#f4f5f8] text-slate-900 font-sans selection:bg-[#0F3040] selection:text-white flex flex-col">
+    <SwarmCursor
+      color="#D99B7F"
+      accentColor="#0F3040"
+      count={14}
+      size={12}
+      speed={2.6}
+      spread={120}
+      wander={0.25}
+      trail={0.75}
+      glow={0.95}
+      fixed={true}
+      scatterOnClick={true}
+      className="min-h-screen w-full bg-[#f4f5f8] text-slate-900 font-sans selection:bg-[#0F3040] selection:text-white flex flex-col"
+    >
       {/* Background Pattern */}
       <GridBackground />
 
@@ -58,6 +72,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </SwarmCursor>
   );
 }
