@@ -209,6 +209,20 @@ export const PORTFOLIO_DATA = {
   // 💼 Pengalaman Kerja & Magang
   experiences: [
     {
+      id: 'mentari-cs-2026',
+      yearPeriod: 'Tahun 2026',
+      company: 'Mentari Digital',
+      location: 'Kediri, Jawa Timur',
+      role: 'Customer Service Pulsa',
+      type: 'Part-Time',
+      description: 'Menangani pelayanan kendala transaksi pengguna dan troubleshooting komplain pelanggan.',
+      tasks: [
+        'Melayani bantuan dan penanganan kendala transaksi pengguna.',
+        'Troubleshooting dan penyelesaian komplain pelanggan terkait layanan pulsa.',
+        'Eskalasi masalah teknis ke tim terkait dan pemeliharaan kepuasan pelanggan.',
+      ],
+    },
+    {
       id: 'konten-coklat',
       yearPeriod: 'Feb 2026 – Jun 2026',
       company: 'Konten Coklat UMKM',
@@ -224,17 +238,17 @@ export const PORTFOLIO_DATA = {
       ],
     },
     {
-      id: 'mentari-digital',
-      yearPeriod: 'Jan 2024 – Jan 2026',
+      id: 'mentari-op-2024',
+      yearPeriod: 'Tahun 2024',
       company: 'Mentari Digital',
       location: 'Kediri, Jawa Timur',
-      role: 'Technical Support & System Operator',
-      type: 'Part-Time / Contract',
-      description: 'Menangani triage teknis pengguna, pemantauan transaksi real-time, dan eskalasi sistem.',
+      role: 'Operator Pulsa',
+      type: 'Magang / Internship',
+      description: 'Pengoperasian sistem transaksi pengisian pulsa dan pemantauan transaksi harian.',
       tasks: [
-        'Triage dan troubleshooting awal kendala teknis pengguna.',
-        'Pemantauan status transaksi via dashboard operasional.',
-        'Dokumentasi & eskalasi masalah teknis ke tim terkait.',
+        'Pengoperasian sistem transaksi pengisian pulsa secara akurat.',
+        'Pemantauan status pengiriman dan antrean transaksi secara real-time.',
+        'Pencatatan rekapitulasi data transaksi operasional harian.',
       ],
     },
     {
