@@ -16,7 +16,7 @@ export default function SwarmCursor({
   trail = 0.8,
   scatterOnClick = true,
   enabled = true,
-  fixed = true,
+  _fixed = true,
   children,
   className = '',
   style = {},

@@ -15,7 +15,7 @@ export const PORTFOLIO_DATA = {
     location: 'Kediri, Jawa Timur, Indonesia',
     statusBadge: 'Terbuka untuk Intern & Full-Time Remote / On-Site',
     avatar: '/profile.png',
-    cvPdfPath: '/Muhammad Fatkur Rizky – Curriculum Vitae.pdf',
+    cvPdfPath: '/Muhammad_Fatkur_Rizky_CV.pdf',
     
     // Header Presentation Tag
     headerTag: 'Presentasi Tentang Saya',

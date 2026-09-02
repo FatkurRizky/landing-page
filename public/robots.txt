@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fatkurrizky.netlify.app/sitemap.xml

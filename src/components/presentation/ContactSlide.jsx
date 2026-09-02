@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2, ArrowUp } from 'lucide-react';
+import { Mail, MapPin, Send, MessageSquare, CheckCircle2, ArrowUp } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { motion } from 'framer-motion';
 
